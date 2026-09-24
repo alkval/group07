@@ -12,6 +12,7 @@ Usage:
     python run_pipeline.py --help        # Show help
 """
 
+import os
 import sys
 import argparse
 import logging
@@ -31,8 +32,13 @@ def run_lab2():
     logger.info("RUNNING LAB 2: SPARK FUNDAMENTALS & MEDALLION ARCHITECTURE")
     logger.info("=" * 60)
     
+    output_dir = os.environ.get('DAT535_OUTPUT_DIR')
+
     from lab2_pipeline import Lab2Pipeline
-    pipeline = Lab2Pipeline()
+    pipeline = Lab2Pipeline(
+        base_dir=os.path.join(output_dir, 'lab2') if output_dir else None,
+        shared_dir=os.path.join(output_dir, 'shared') if output_dir else None,
+    )
     return pipeline.run()
 
 
@@ -46,8 +52,13 @@ def run_lab3():
     logger.info("RUNNING LAB 3: ADVANCED SPARK & PRODUCTION PATTERNS")
     logger.info("=" * 60)
     
+    output_dir = os.environ.get('DAT535_OUTPUT_DIR')
+
     from lab3_pipeline import Lab3Pipeline
-    pipeline = Lab3Pipeline()
+    pipeline = Lab3Pipeline(
+        base_dir=os.path.join(output_dir, 'lab3') if output_dir else None,
+        shared_dir=os.path.join(output_dir, 'shared') if output_dir else None,
+    )
     return pipeline.run()
 
 
