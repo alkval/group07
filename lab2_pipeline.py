@@ -21,7 +21,7 @@ Usage:
     # Or via run_pipeline.py:
     python run_pipeline.py lab2
 """
-
+# Development pipeline test for Group 07
 import logging
 import json
 import os
